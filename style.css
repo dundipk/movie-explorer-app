@@ -1,0 +1,496 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --light-gradient: linear-gradient(120deg, #5f27cd, #9980fa, #341f97);
+  --dark-gradient: linear-gradient(120deg, #2e1458, #2e2e2e, #958bac);
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background: var(--light-gradient);
+  color: white;
+  min-height: 100vh;
+  transition: background-color 0.4s ease, color 0.4s ease;
+  margin-top: 80px;
+}
+
+.dark-mode {
+  background: var(--dark-gradient);
+}
+
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem 2rem;
+  height: 70px;
+  background-color: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(10px);
+}
+
+.search-theme-wrap {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+#search {
+  padding: 6px 12px;
+  border-radius: 15px;
+  border: none;
+  font-size: 1rem;
+  outline: none;
+}
+
+#theme-toggle {
+  font-size: 1.2rem;
+  cursor: pointer;
+  background: none;
+  border: none;
+  color: white;
+}
+
+.logo {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: #ffffff;
+  position: relative;
+  cursor: pointer;
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.logo::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -5px;
+  width: 100%;
+  height: 3px;
+  background: linear-gradient(to right, #feca57, #5f27cd);
+  border-radius: 2px;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.3s ease-in-out;
+}
+
+.logo:hover {
+  transform: scale(1.05);
+  color: goldenrod;
+}
+
+.logo:hover::after {
+  transform: scaleX(1);
+}
+
+/* ==================== Trending ==================== */
+
+.trending {
+  margin: 1rem;
+}
+
+.carousel-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  overflow: hidden;
+  position: relative;
+  padding: 0 20px;
+}
+
+.carousel-wrapper .carousel-btn {
+  font-size: 2rem;
+  background: none;
+  border: none;
+  color: #feca57;
+  cursor: pointer;
+  z-index: 10;
+  transition: transform 0.2s;
+}
+
+.carousel-wrapper .carousel-btn:hover {
+  transform: scale(1.2);
+}
+
+.trending-slider {
+  display: flex;
+  gap: 10px;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  padding: 1rem 20px;
+  flex: 1;
+  scrollbar-width: none;
+  scroll-padding-inline: 20px;
+  will-change: transform;
+  backface-visibility: hidden;
+}
+
+.trending-slider::-webkit-scrollbar {
+  display: none;
+}
+
+.trending-slider img {
+  height: 200px;
+  border-radius: 10px;
+  transition: transform 0.3s ease-in-out;
+  flex-shrink: 0;
+}
+
+.trending-slider img:hover {
+  transform: scale(1.03);
+}
+
+.trending-card {
+  position: relative;
+  width: 150px;
+  height: 225px;
+  border-radius: 10px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: transform 0.3s;
+  flex-shrink: 0;
+}
+
+.trending-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* ==================== Genres ==================== */
+
+.genres {
+  margin: 1rem;
+  text-align: center;
+}
+
+#genres {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  justify-content: center;
+  margin-top: 0.5rem;
+}
+
+#genres button {
+  padding: 8px 16px;
+  font-weight: bold;
+  border: none;
+  cursor: pointer;
+  background: rgba(255, 255, 255, 0.15);
+  color: white;
+  border-radius: 20px;
+  position: relative;
+  overflow: hidden;
+  transition: 0.3s;
+}
+
+#genres button::before {
+  content: '';
+  position: absolute;
+  background: #feca57;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  transform: skewX(-20deg);
+  z-index: 0;
+  transition: 0.5s;
+}
+
+#genres button:hover::before {
+  left: 100%;
+}
+
+#genres button:hover {
+  box-shadow: 0 0 10px #feca57;
+  color: #feca57;
+}
+
+/* ==================== Everything Movies ==================== */
+
+.everything {
+  margin: 1rem;
+}
+
+#main {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 1rem;
+  padding: 1rem;
+}
+
+.movie {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 10px;
+  overflow: hidden;
+  position: relative;
+  transition: transform 0.3s;
+}
+
+.movie:hover {
+  transform: translateY(-5px);
+}
+
+.movie img {
+  width: 100%;
+  border-radius: 10px;
+}
+
+.movie-info {
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.movie-info h3 {
+  font-size: 0.9rem;
+}
+
+.movie-info span {
+  padding: 2px 6px;
+  border-radius: 4px;
+  background-color: #222f3e;
+  color: #feca57;
+  font-size: 0.75rem;
+}
+
+.overview {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.85);
+  color: #fff;
+  padding: 10px;
+  max-height: 100%;
+  transform: translateY(100%);
+  transition: transform 0.4s;
+  font-size: 0.8rem;
+}
+
+.movie:hover .overview {
+  transform: translateY(0);
+}
+
+.know-more {
+  margin-top: 8px;
+  display: inline-block;
+  padding: 4px 10px;
+  background: #feca57;
+  color: #222f3e;
+  border-radius: 15px;
+  text-decoration: none;
+  font-size: 0.75rem;
+}
+
+.know-more:hover {
+  background: whitesmoke;
+}
+
+.watch-trailer {
+  margin-top: 5px;
+  display: inline-block;
+  padding: 4px 10px;
+  background: #1dd1a1;
+  color: #222f3e;
+  border-radius: 15px;
+  font-size: 0.75rem;
+  text-decoration: none;
+}
+
+.watch-trailer:hover {
+  background: whitesmoke;
+}
+
+/* ==================== Pagination ==================== */
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin: 1rem 0;
+}
+
+.pagination button {
+  padding: 5px 10px;
+  border: none;
+  border-radius: 6px;
+  background: #feca57;
+  color: #222f3e;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+/* ==================== Trailer Popup ==================== */
+
+.video-popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(10, 10, 10, 0.95);
+  color: white;
+  z-index: 9999;
+  padding: 2rem;
+  overflow: hidden;
+  display: none;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.close-popup {
+  position: absolute;
+  top: 10px;
+  right: 20px;
+  font-size: 2rem;
+  cursor: pointer;
+}
+
+.video-carousel {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.carousel-track {
+  display: flex;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  scrollbar-width: none;
+}
+
+.carousel-track::-webkit-scrollbar {
+  display: none;
+}
+
+.carousel-track iframe {
+  width: 300px;
+  height: 180px;
+  border: none;
+  border-radius: 10px;
+  flex-shrink: 0;
+}
+
+/* Hover trailer popup */
+.hover-popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hover-popup-backdrop {
+  position: absolute;
+  inset: 0;
+  backdrop-filter: blur(8px);
+  background: rgba(0, 0, 0, 0.6);
+  z-index: -1;
+}
+
+.hover-popup-content {
+  width: 90%;
+  max-width: 900px;
+  aspect-ratio: 16/9;
+  border-radius: 20px;
+  overflow: hidden;
+  background: #000;
+  animation: scaleIn 0.35s ease;
+  position: relative;
+}
+
+.hover-popup-content iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+  border-radius: 16px;
+  display: block;
+}
+
+.hover-popup-content .close-popup {
+  position: absolute;
+  top: 8px;
+  right: 12px;
+  font-size: 1.5rem;
+  color: white;
+  cursor: pointer;
+}
+
+@keyframes scaleIn {
+  from {
+    transform: scale(0.9);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* ===== Trailer Hover Popup ===== */
+.hover-popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hover-popup-backdrop {
+  position: absolute;
+  inset: 0;
+  backdrop-filter: blur(12px);
+  background: rgba(0, 0, 0, 0.6);
+  z-index: -1;
+}
+
+.hover-popup-content {
+  width: 90%;
+  max-width: 900px;
+  aspect-ratio: 16/9;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.15);
+  background: linear-gradient(135deg, #feca57, #5f27cd, #48dbfb);
+  padding: 4px;
+  animation: scaleIn 0.35s ease;
+  position: relative;
+}
+
+.hover-popup-content iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+  border-radius: 16px;
+  display: block;
+  background: black;
+}
+
+@keyframes scaleIn {
+  from {
+    transform: scale(0.9);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}

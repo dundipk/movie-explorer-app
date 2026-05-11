@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>DUNDIPK'S MOVIE APP</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <h1 class="logo" onclick="location.reload()">🎬ReelView</h1>
+    <div class="search-theme-wrap">
+      <button id="theme-toggle">🌞</button>
+      <input type="text" id="search" placeholder="Search movies...">
+    </div>
+  </header>
+
+  <section class="trending">
+    <h2>🔥 Trending Now</h2>
+    <div class="carousel-wrapper">
+      <button class="carousel-btn left" onclick="scrollCarousel('trending-slider', -1)">❮</button>
+      <div class="trending-slider" id="trending-slider"></div>
+      <button class="carousel-btn right" onclick="scrollCarousel('trending-slider', 1)">❯</button>
+    </div>
+  </section>
+
+  <section class="genres">
+    <h2>🎭 Genres</h2>
+    <div id="genres"></div>
+  </section>
+
+  <section class="everything">
+    <h2>✨ Everything</h2>
+    <div id="main"></div>
+  </section>
+
+  <div class="pagination">
+    <button id="prev">⏮ Prev</button>
+    <span id="current">Page 1</span>
+    <button id="next">Next ⏭</button>
+  </div>
+
+  <!-- Trailer Popup -->
+  <div id="video-popup" class="video-popup">
+    <span class="close-popup" onclick="closePopup()">❌</span>
+    <div class="video-section">
+      <h3>🎬 Trailers</h3>
+      <div class="video-carousel" id="trailers">
+        <button class="carousel-btn left" onclick="scrollCarousel('trailers-track', -1)">❮</button>
+        <div class="carousel-track" id="trailers-track"></div>
+        <button class="carousel-btn right" onclick="scrollCarousel('trailers-track', 1)">❯</button>
+      </div>
+    </div>
+    <div class="video-section">
+      <h3>🎥 Other Related Videos</h3>
+      <div class="video-carousel" id="others">
+        <button class="carousel-btn left" onclick="scrollCarousel('others-track', -1)">❮</button>
+        <div class="carousel-track" id="others-track"></div>
+        <button class="carousel-btn right" onclick="scrollCarousel('others-track', 1)">❯</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
